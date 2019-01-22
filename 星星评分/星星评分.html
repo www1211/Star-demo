@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=yes">
+    <title>星星评分</title>
+    <script src="jquery.min.js"></script>
+
+   <style type="text/css">
+      .star-wrap .star{ display: inline-block; width: 30px; height:30px; background:url(star/Pstar.png) no-repeat; background-size: 100%; cursor: pointer;}
+      .star-wrap .Praise{ background:url(star/hstar.png) no-repeat; background-size: 100%; }
+      .star-wrap .difference{background:url(star/tstar.png) no-repeat; background-size: 100%;}
+   </style>
+   <script type="text/javascript">
+       $(function(){            
+            $(".star-wrap span").click(function () {
+                var index = $(".star-wrap span").index(this);//判断当前元素是第几个元素
+                if($(this).attr("class") =="star Praise"){
+                    for(var i= index +1; i <= $(".star-wrap span").length; i++){
+                        $(".star-wrap span").eq(i).removeClass("Praise");
+                    } 
+                }else{
+                    for(var i=0; i <= index; i++){
+                    $(".star-wrap span").eq(i).addClass("Praise");
+                } 
+                }                                             
+             });
+            //提交函数
+            $("#Submit").click(function(){
+              var starnumber = 0;
+              $(".star-wrap span").each(function(){
+                  debugger;
+                  if($(this).attr("class") == "star Praise"){
+                    starnumber = starnumber+1
+                  }
+              });
+              alert("您当前评分为" + starnumber +"颗星" );
+
+            })
+
+
+       })
+
+
+   </script>
+</head>
+<body>
+    <div class="star-wrap">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </div>
+    <div><button id="Submit">提交</button></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
